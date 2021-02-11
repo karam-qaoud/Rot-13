@@ -3,32 +3,29 @@
 console.log("Rot-13 algorithm ...");
 
 var convert = function convert(text) {
-    var smallAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var capitalAlphabet = smallAlphabet.map(function (letter) {
-        return letter.toUpperCase();
-    });
-    var textArr = text.split('');
-    for (var i = 0; i < textArr.length; i++) {
-        if (smallAlphabet.includes(textArr[i])) {
-            var indexed = smallAlphabet.indexOf(textArr[i]);
-            if (indexed > 13) {
-                indexed = indexed - 26 + 13;
-                textArr[i] = smallAlphabet[indexed];
-            } else {
-                textArr[i] = smallAlphabet[indexed + 13];
-            };
-        } else if (capitalAlphabet.includes(textArr[i])) {
-            var capitalIndexed = capitalAlphabet.indexOf(textArr[i]);
-            if (capitalIndexed > 13) {
-                capitalIndexed = capitalIndexed - 26 + 13;
-                textArr[i] = capitalAlphabet[capitalIndexed];
-            } else {
-                textArr[i] = capitalAlphabet[capitalIndexed + 13];
-            };
-        };
-    };
-    text = textArr.join('');
-    console.log(text);
+  var smallAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  var capitalAlphabet = smallAlphabet.map(function (letter) {
+    return letter.toUpperCase();
+  });
+  var textArr = text.split("");
+  var replace = function replace(arr, m) {
+    var index = arr.indexOf(textArr[m]);
+    if (index >= 13) {
+      index = index - 26 + 13; //English alphabet is 26 letters
+      textArr[m] = arr[index];
+    } else {
+      textArr[m] = arr[index + 13];
+    }
+  };
+  for (var i = 0; i < textArr.length; i++) {
+    if (smallAlphabet.includes(textArr[i])) {
+      replace(smallAlphabet, i);
+    } else if (capitalAlphabet.includes(textArr[i])) {
+      replace(capitalAlphabet, i);
+    }
+  }
+  text = textArr.join("");
+  console.log(text);
 };
 
-convert("Hello, friend!");
+convert("Vs guvf vf qrpbqrq, gura gur cebtenz jbexf!");
