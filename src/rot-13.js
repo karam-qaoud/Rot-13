@@ -1,5 +1,6 @@
 console.log("Rot-13 algorithm ...");
-let text = "karam"
+
+
 const convert = text => {
     const smallAlphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
     const capitalAlphabet = smallAlphabet.map(letter => letter.toUpperCase());
@@ -21,13 +22,11 @@ const convert = text => {
             } else {
                 textArr[i] = capitalAlphabet[capitalIndexed + 13];
             };
-        }
-    }
+        };
+    };
     text = textArr.join('');
     console.log(text);
-
-    return text;
-}
+};
 
 
 

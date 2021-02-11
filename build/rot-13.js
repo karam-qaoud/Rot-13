@@ -1,7 +1,7 @@
 "use strict";
 
 console.log("Rot-13 algorithm ...");
-var text = "karam";
+
 var convert = function convert(text) {
     var smallAlphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var capitalAlphabet = smallAlphabet.map(function (letter) {
@@ -25,12 +25,10 @@ var convert = function convert(text) {
             } else {
                 textArr[i] = capitalAlphabet[capitalIndexed + 13];
             };
-        }
-    }
+        };
+    };
     text = textArr.join('');
     console.log(text);
-
-    return text;
 };
 
 convert("Hello, friend!");
